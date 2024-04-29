@@ -11,16 +11,30 @@
   </Tabs>
 
   <Card bordered title="Todo Stats">
-    <Typography>Done: <Badge  :count="store.doneTodosCount" /></Typography>
-    <Typography>Important: <Badge :count="store.importantTodosCount" /></Typography>
-    <Typography>Active: <Badge :count="store.activeTodosCount" /></Typography>
+    <Typography>Done:
+      <Badge :count="store.doneTodosCount" />
+    </Typography>
+    <Typography>Important:
+      <Badge :count="store.importantTodosCount" />
+    </Typography>
+    <Typography>Active:
+      <Badge :count="store.activeTodosCount" />
+    </Typography>
   </Card>
   <List :loading="store.loading" class="todo-list" :data-source="store.todos">
     <template #renderItem="{ item }">
       <ListItem class="list-item" :class="{ 'important-list-item': item.important }">
         <div>
-          <CheckOutlined class="icon" @click="store.toggleDone(item.id)" title="Toggle done" />
-          <ExclamationOutlined class="icon r" @click="store.toggleImportant(item.id)" title="Toggle important" />
+          <Button @click="store.toggleDone(item.id)" :type="item.done ? 'primary' : 'text'" class="icon">
+            <template #icon>
+              <CheckOutlined title="Toggle done" />
+            </template>
+          </Button>
+          <Button @click="store.toggleImportant(item.id)" :type="item.important ? 'primary' : 'text'" class="icon">
+            <template #icon>
+              <ExclamationOutlined  title="Toggle important" />
+            </template>
+          </Button>
           <EditTwoTone class="icon" @click="() => toggleEditMode(item)" title="Edit" />
         </div>
         <div :class="{ 'line-through': item.done }">
@@ -42,7 +56,7 @@ import { readableDate } from '@/utils/dateFormatter';
 import {
   Input, List, ListItem,
   Typography, Tabs, TabPane, Card, InputSearch,
-  Badge
+  Badge, Button
 } from 'ant-design-vue';
 import EditModal from './EditModal.vue';
 import { ref, onMounted } from 'vue';
