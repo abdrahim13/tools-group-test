@@ -8,6 +8,8 @@
 cd /backend
 ./build_docker.sh
 ```
+*This will serve the webapp (Vue js), API and create the database*
+*Note: App will be served on http://localhost:5000*
 
 
 
@@ -27,9 +29,6 @@ npm run build
 *Note: Vue app already build and server with static server see **backend/public***
 
 
-### 
-
-
 
 ## Backend
 
@@ -39,8 +38,6 @@ npm run build
 python3 manage.py run
 ```
 *Note : Fullstack app already build and served by UWSGI python server and docker see **backend/build_docker.sh*** 
-
-
 
 
 
