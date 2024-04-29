@@ -30,6 +30,7 @@ class Todo(Resource):
         return delete_todo(todo_id)
 
 
+# /api/todos
 class TodoList(Resource):
 
     def get(self):
@@ -39,11 +40,11 @@ class TodoList(Resource):
         try:
             json_data = request.get_json(force=True)
         except Exception as e:
-            return {'error': 'Invalid JSON payload'}, 400
+            return {'error': 'Invalid JSON payload', "stack": str(e)}, 400
         return create_todo(json_data)
-        
 
 
+# /api/search
 class SearchTodoList(Resource):
 
     def get(self):

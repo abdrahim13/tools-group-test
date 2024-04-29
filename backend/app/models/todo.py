@@ -46,7 +46,7 @@ class Todo(db.Model):
         """
         update todo
         """
-        # 
+        # use javascript convention for json keys 
         if "deadlineDate" in data:
             # fix date format from frontend iSO 8601 to python date
             deadline_date = data.pop("deadlineDate")
