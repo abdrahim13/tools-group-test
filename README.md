@@ -5,8 +5,8 @@
 #### Docker Build Script (/backend)
 
 ```bash
-  cd /backend
-  ./build_docker.sh
+cd /backend
+./build_docker.sh
 ```
 
 
@@ -24,18 +24,21 @@ npm run dev
 ```bash
 npm run build
 ```
-#### Note : app Already build and served by UWSGI python server  
+*Note: Vue app already build and server with static server see **backend/public***
 
+
+### 
 
 
 
 ## Backend
 
-#### Development
+#### Development Server (standalone)
 
 ```bash
-  python3 manage.py run
+python3 manage.py run
 ```
+*Note : Fullstack app already build and served by UWSGI python server and docker see **backend/build_docker.sh*** 
 
 
 
@@ -47,6 +50,6 @@ npm run build
 #### Migrate
 
 ```bash
-  python3 manage.py create_db
+python3 manage.py create_db
 ```
 
