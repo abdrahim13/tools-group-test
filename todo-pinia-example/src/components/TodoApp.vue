@@ -11,13 +11,13 @@
   </Tabs>
 
   <Card bordered title="Todo Stats">
-    <Typography>Done: {{ store.doneTodosCount }}</Typography>
-    <Typography>Important: {{ store.importantTodosCount }}</Typography>
-    <Typography>Active: {{ store.activeTodosCount }}</Typography>
+    <Typography>Done: <Badge  :count="store.doneTodosCount" /></Typography>
+    <Typography>Important: <Badge :count="store.importantTodosCount" /></Typography>
+    <Typography>Active: <Badge :count="store.activeTodosCount" /></Typography>
   </Card>
   <List :loading="store.loading" class="todo-list" :data-source="store.todos">
     <template #renderItem="{ item }">
-      <ListItem class="list-item" :class="{'important-list-item': item.important }">
+      <ListItem class="list-item" :class="{ 'important-list-item': item.important }">
         <div>
           <CheckOutlined class="icon" @click="store.toggleDone(item.id)" title="Toggle done" />
           <ExclamationOutlined class="icon r" @click="store.toggleImportant(item.id)" title="Toggle important" />
@@ -28,7 +28,7 @@
           <p>{{ readableDate(item.deadlineDate) }}</p>
         </div>
 
-        <CloseCircleOutlined  class="icon icon-danger" @click="store.removeTodo(item.id)" />
+        <CloseCircleOutlined class="icon icon-danger" @click="store.removeTodo(item.id)" />
       </ListItem>
     </template>
   </List>
@@ -39,7 +39,11 @@
 import type { ITodo } from '@/interfaces';
 import { TABS } from '@/constants';
 import { readableDate } from '@/utils/dateFormatter';
-import { Input, List, ListItem, Typography, Tabs, TabPane, Card, InputSearch } from 'ant-design-vue';
+import {
+  Input, List, ListItem,
+  Typography, Tabs, TabPane, Card, InputSearch,
+  Badge
+} from 'ant-design-vue';
 import EditModal from './EditModal.vue';
 import { ref, onMounted } from 'vue';
 import { useTodoStore } from '@/stores/todo';
@@ -116,7 +120,7 @@ onMounted(() => {
   font-weight: 700;
 }
 
-.important-list-item{
+.important-list-item {
   background: #f0f0f0;
 }
 
@@ -125,7 +129,7 @@ onMounted(() => {
   padding: 1rem;
 }
 
-.list-item{
+.list-item {
   padding: 1rem;
 }
 </style>
