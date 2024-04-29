@@ -1,0 +1,1 @@
+import{_ as o,o as e,c as t,a as s}from"./index-aa765ed0.js";const c={},_={class:"about"},a=s("h1",null,"About Tools group Todo ",-1),n=[a];function r(d,i){return e(),t("div",_,n)}const u=o(c,[["render",r]]);export{u as default};

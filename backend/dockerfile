@@ -1,0 +1,27 @@
+FROM python:3-alpine
+
+RUN apk add --virtual .build-dependencies \ 
+            --no-cache \
+            python3-dev \
+            build-base \
+            linux-headers \
+            pcre-dev
+
+RUN apk add --no-cache pcre
+
+WORKDIR /backend
+COPY /app /backend/app
+COPY ./uwsgi.ini /backend
+COPY ./uwsgi_run.py /backend
+COPY ./manger.py /backend/manger.py
+
+
+COPY ./requirements.txt /backend
+
+RUN pip install -r /backend/requirements.txt
+
+RUN apk del .build-dependencies && rm -rf /var/cache/apk/*
+
+EXPOSE 5000
+
+CMD ["uwsgi", "--ini", "/backend/uwsgi.ini"]
