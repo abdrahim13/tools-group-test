@@ -66,9 +66,6 @@ export const useTodoStore = defineStore('todo', () => {
   }
 
 
-
-
-
   async function loadTodo() {
     loading.value = true;
     const response = await getTodos()
