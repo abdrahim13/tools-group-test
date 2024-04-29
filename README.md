@@ -9,7 +9,8 @@ cd /backend
 ./build_docker.sh
 ```
 *This will serve the webapp (Vue js), API and create the database*
-*Note: App will be served on http://localhost:5000*
+
+*Note:** App will be served on http://localhost:5000*
 
 
 
